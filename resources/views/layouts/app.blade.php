@@ -81,6 +81,7 @@
 </div>
 </body>
 <script src="/plugin/jquery/jquery.min.js"></script>
+<script src="/plugin/jquery/ui/jquery-ui.min.js"></script>
 <script src="/plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/js/app.js"></script>
 @yield('script')

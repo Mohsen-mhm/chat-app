@@ -36,10 +36,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->user();
-        $newMessage = new Message();
-        $message = $newMessage->createMessage($request->message, $user->id);
-        event(new MessageSent($user, $message));
-        return true;
+        try {
+            $user = $request->user();
+            $newMessage = new Message();
+            $message = $newMessage->createMessage($request->message, $user->id);
+            event(new MessageSent($user, $message));
+            return response()->json(['status' => 200]);
+        } catch (\Exception $exception) {
+            return response()->json(['status' => $exception->getCode()]);
+        }
     }
 }
